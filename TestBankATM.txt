@@ -1,0 +1,80 @@
+//Bank ATM class for declaring all the methods and variables
+class BankATM {
+	
+	int atmId;
+	String bankName;
+	String location;
+	double balance;
+	public BankATM(int atmId, String bankName, String location, int balance) {
+		super();
+		this.atmId = atmId;
+		this.bankName = bankName;
+		this.location = location;
+		this.balance = balance;
+	}
+	public void withdraw(double amount )throws BankATMExcepion{
+		
+		double newAccountBalance=10000;
+		if(balance<newAccountBalance|(balance<10000)){
+			throw new BankATMExcepion("Balance is less than 10000. Cannot withdraw");
+			
+		}
+		else{
+			newAccountBalance=balance-amount;
+			balance=newAccountBalance;
+			System.out.println("Balance is "+balance);
+			
+	}}
+	public void deposit(double amount)throws BankATMExcepion {
+		double newAccountBalance=10000;
+		if(amount<0.0){
+			throw new BankATMExcepion("cannot deposit");
+			
+	}else{
+		newAccountBalance =balance+amount;
+		balance=newAccountBalance;
+		
+		System.out.println("balance is "+balance);
+	}
+	
+	
+
+	}}
+
+// Bank ATM Exception Class
+class BankATMExcepion extends Exception {
+
+	public BankATMExcepion(String message) {
+	super(message);
+	
+	
+	}
+	
+}
+
+// Main Class Test Bank ATM
+public class TestBankATM {
+public static void main(String[] args) {
+	BankATM b1=new BankATM(1001, "ICICI Bank", "Bengaluru", 50000);
+	BankATM b2=new BankATM(1009, "ICICI Bank", "Mumbai", 40000);
+	BankATM b3=new BankATM(1090, "ICICI Bank", "Delhi", 10000);
+	try {
+		b1.withdraw(400);
+		b1.deposit(300);
+	}catch(Exception e) {
+		System.out.println("Exception occurred "+e);
+	}
+	try {
+		b2.withdraw(700);
+		b2.deposit(200);
+	}catch(Exception e) {
+		System.out.println("Exception occurred "+e);
+	}
+	try {
+		b3.withdraw(12500);
+		b3.deposit(500);
+	}catch(Exception e) {
+		System.out.println("Exception occurred "+e);
+	}
+}}
+
